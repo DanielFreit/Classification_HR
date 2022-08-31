@@ -24,7 +24,7 @@ based on several historical data'''
 base = pd.read_csv('Human_Resources.csv')
 df = pd.read_csv('Human_Resources.csv')
 
-# PRINT 1
+# CHECK PRINT 1
 
 #  todo EXPLORATION ------------------------
 
@@ -33,14 +33,14 @@ df = pd.read_csv('Human_Resources.csv')
 print(base.info())
 print(base.describe())
 
-# PRINT 1B
+# CHECK PRINT 1B
 
 '''Here we can see some exploratory data from the dataset'''
 
 df.hist(bins=30, figsize=(20, 20), color='r')
 plt.show()
 
-# PRINT 2
+# CHECK PRINT 2
 
 '''Now we know that columns like 'EmployeeCount', 'StandardHours', 'Over18' and 'EmployeeNumber don`t help us
 because all the data have the same value, which would not help us with the classification, so the data can be dropped'''
@@ -63,7 +63,7 @@ f, ax = plt.subplots(figsize=(25, 18))
 sns.heatmap(correlations, annot=True)
 plt.show()
 
-# PRINT 3
+# CHECK PRINT 3
 
 '''Now the correlation with the class we want to classify'''
 
@@ -80,14 +80,15 @@ plt.show()
 
 '''We can see that Sales Representatives are more likely to drop the job, we`ll check the salary and other variables
 later, to check more correlations, with distance from work and salary'''
-# PRINT 4
+
+# CHECK PRINT 4
 
 '''Now we need to check the classification data, so we can see if the data is balanced or not'''
 
 sns.countplot(data=df, x='Attrition')
 plt.show()
 
-# PRINT 5
+# CHECK PRINT 5
 
 ''''Let's split the data between the workers that still work in the company and the ones who got a new job'''
 
@@ -100,7 +101,7 @@ plt.figure(figsize=(12, 8))
 sns.boxplot(x='MonthlyIncome', y='JobRole', data=df)
 plt.show()
 
-# PRINT 6
+# CHECK PRINT 6
 
 '''Maybe the company is not paying enough for the Sales Representatives, we can see in different plots that this
 might be the case'''
@@ -168,7 +169,7 @@ by one hot encoder'''
 
 X = pd.concat([X_cat, X_num], axis=1)
 
-# PRINT 7
+# CHECK PRINT 7
 
 #  todo ATTRIBUTE SELECTION CHI2, ANOVA------------------------
 
@@ -194,7 +195,7 @@ smote = SMOTE(sampling_strategy='minority', random_state=0)
 X, y = smote.fit_resample(X, y)
 print(X.shape, y.shape)
 
-# PRINT 8
+# CHECK PRINT 8
 
 #  todo NORMALIZATION ------------------------
 
@@ -203,7 +204,7 @@ print(X.shape, y.shape)
 standardscaler = StandardScaler()
 X = standardscaler.fit_transform(X)
 
-# PRINT 9
+# CHECK PRINT 9
 
 #  todo PRE PROCESSING SAVE ------------------------
 
@@ -294,7 +295,7 @@ print(r_forest.max())
 sns.histplot(r_forest, kde=True)
 plt.show()
 
-# PRINT 10
+# CHECK PRINT 10
 
 #  todo SHAPIRO NORMALIZATION TEST ------------------------
 
@@ -307,7 +308,7 @@ print(shapiro(r_logistic))
 print('RANDOM FOREST')
 print(shapiro(r_forest))
 
-# PRINT 11
+# CHECK PRINT 11
 
 #  todo NORMAL = ANOVA/TUKEY TEST ------------------------
 
@@ -348,7 +349,7 @@ plt.show()
 
 '''We can see the model that gave us better results and how much they vary'''
 
-# PRINT 12
+# CHECK PRINT 12
 
 #  todo MODEL SELECTION ------------------------
 
@@ -370,7 +371,7 @@ cm = confusion_matrix(y_test, prediction)
 sns.heatmap(cm, annot=True)
 plt.show()
 
-# PRINT 13
+# CHECK PRINT 13
 
 #  todo SAVE ------------------------
 
@@ -417,7 +418,7 @@ X_sing = standardscaler.transform(X_sing)
 print(forest.predict(X_sing))
 print(forest.predict_proba(X_sing))
 
-# PRINT 14
+# CHECK PRINT 14
 
 '''As we can see, the model gave us the answer 0 (He's not likely to leave the company)'''
 '''The model also showed the precision that he thinks this entry belongs to each group (0 or 1)'''
