@@ -17,6 +17,8 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 from sklearn.neural_network import MLPClassifier
 
 
+
+
 #  MORE INFO ABOUT THE DATASET - https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset
 
 '''The dataset consists in an internal evaluation by IBM to check if a worker is likely to leave the company
